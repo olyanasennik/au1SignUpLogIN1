@@ -23,7 +23,7 @@ public class SignUpLogIN {
         String actualTitle = driver.getTitle();
         Assert.assertTrue(actualTitle.contains(expectedTerm));
         //3.Click on SignUp here
-        driver.findElement(By.linkText("Signup here")).click();
+        driver.findElement(By.id("hideLogin")).click();
         //4.Fill out the form with required info
         Faker faker = new Faker();
         String username = faker.name().username();
