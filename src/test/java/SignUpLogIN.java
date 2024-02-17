@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import java.time.Duration;
-
 import static java.lang.Thread.sleep;
 
 public class SignUpLogIN {
@@ -32,7 +31,7 @@ public class SignUpLogIN {
         String email = faker.internet().emailAddress();
         String confirmemail = email;
         driver.findElement(By.xpath("//input[@id= 'loginUsername']")).sendKeys(username, Keys.TAB, first, Keys.TAB, last, Keys.TAB, email, Keys.TAB, confirmemail, Keys.TAB, "olganik13", Keys.TAB, "olganik13", Keys.ENTER );
-        //Thread.sleep(1000);
+        Thread.sleep(1000);
         //6. Click on Sign up
         driver.findElement(By.name("SIGN UP")).submit();
         //7.Verify that the URL is..
