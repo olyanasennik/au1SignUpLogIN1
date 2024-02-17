@@ -10,7 +10,7 @@ import java.time.Duration;
 import static java.lang.Thread.sleep;
 
 public class SignUpLogIN {
-    public static void main (String[]args){
+    public static void main (String[]args) throws InterruptedException {
         //1.Navigate to..
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
