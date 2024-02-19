@@ -39,14 +39,14 @@ public class SignUpLogIN {
         Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/browse.php?");
 
         //8. In the left navigation bar, verify that your first and last name matches the first and last name that you used when signing up:
-        WebElement leftNavbar = driver.findElement(By.className("navItemLink"));
+        WebElement leftNavbar = driver.findElement(By.id("nameFirstAndLast"));
         Assert.assertTrue(leftNavbar.getText().contains(first));
         Assert.assertTrue(leftNavbar.getText().contains(last));
         //9. Click on the username on the left navigation bar and verify the username on the main window is correct and then click logout:
         driver.findElement(By.xpath("//span[@id='nameFirstAndLast']")).click();
         driver.findElement(By.id("rafael")).click();
         //10. = 7.
-        Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/browse.php");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/settings.php?");
         //11. Login using the same username and password when you signed up.
         driver.findElement(By.name("loginUsername")).sendKeys(username, Keys.TAB, "olganik13", Keys.ENTER);
         //12. Verify successful login by verifying that the home page contains the text "You Might Also Like".
