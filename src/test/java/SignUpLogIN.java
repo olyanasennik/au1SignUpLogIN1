@@ -31,11 +31,11 @@ public class SignUpLogIN {
         String email = faker.internet().emailAddress();
         String confirmemail = email;
         driver.findElement(By.xpath("//input[@id= 'username']")).sendKeys(username, Keys.TAB, first, Keys.TAB, last, Keys.TAB, email, Keys.TAB, confirmemail, Keys.TAB, "olganik13", Keys.TAB, "olganik13", Keys.ENTER );
-        Thread.sleep(1000);
+        sleep(1000);
         //6. Click on Sign up: performed in the previous step by TAB.Enter
         //driver.findElement(By.name("registerButton")).click();
         //7.Verify that the URL is..
-        Thread.sleep(1000);
+        sleep(1000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/browse.php?");
 
         //8. In the left navigation bar, verify that your first and last name matches the first and last name that you used when signing up:
@@ -51,12 +51,15 @@ public class SignUpLogIN {
         driver.findElement(By.name("loginUsername")).sendKeys(username, Keys.TAB, "olganik13", Keys.ENTER);
         //12. Verify successful login by verifying that the home page contains the text "You Might Also Like".
         String expectedTerm1 = "You Might Also Like";
-        String actualTitle1 = driver.getTitle();
-        Assert.assertTrue(actualTitle1.contains(expectedTerm1));
-        //13. Log out once again and verify that you are logged out.
+        //String actualTitle1 = driver.getTitle();
+        //Assert.assertTrue(actualTitle1.contains(expectedTerm1));
+        WebElement tit = driver.findElement(By.xpath("//*[@id=\"mainContent\"]/h1"));
+        Assert.assertTrue(tit.getText().contains(expectedTerm1));
+        // 13. Log out once again and verify that you are logged out. */
         driver.findElement(By.xpath("//span[@id='nameFirstAndLast']")).click();
         driver.findElement(By.id("rafael")).click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/browse.php");
+        Thread.sleep(1000);
+        Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/register.php");
 
 
 
