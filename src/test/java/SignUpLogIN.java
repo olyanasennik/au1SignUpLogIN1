@@ -30,12 +30,14 @@ public class SignUpLogIN {
         String last = faker.address().lastName();
         String email = faker.internet().emailAddress();
         String confirmemail = email;
-        driver.findElement(By.xpath("//input[@id= 'loginUsername']")).sendKeys(username, Keys.TAB, first, Keys.TAB, last, Keys.TAB, email, Keys.TAB, confirmemail, Keys.TAB, "olganik13", Keys.TAB, "olganik13", Keys.ENTER );
+        driver.findElement(By.xpath("//input[@id= 'username']")).sendKeys(username, Keys.TAB, first, Keys.TAB, last, Keys.TAB, email, Keys.TAB, confirmemail, Keys.TAB, "olganik13", Keys.TAB, "olganik13", Keys.ENTER );
         Thread.sleep(1000);
-        //6. Click on Sign up
-        driver.findElement(By.name("SIGN UP")).submit();
+        //6. Click on Sign up: performed in the previous step by TAB.Enter
+        //driver.findElement(By.name("registerButton")).click();
         //7.Verify that the URL is..
+        Thread.sleep(1000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://duotify.us-east-2.elasticbeanstalk.com/browse.php?");
+
         //8. In the left navigation bar, verify that your first and last name matches the first and last name that you used when signing up:
         WebElement leftNavbar = driver.findElement(By.className("navItemLink"));
         Assert.assertTrue(leftNavbar.getText().contains(first));
